@@ -16,10 +16,11 @@ public class SimpleTypeConverter implements TypeConverter {
 		
 	}
 	public <T> T convertIfNecessary(Object value, Class<T> requiredType) throws TypeMismatchException {
-		
+		//如果类型符合直接返回
 		if(ClassUtils.isAssignableValue(requiredType, value)){
 			return (T)value;			
 		} else{
+			//暂时只支持字符串
 			if(value instanceof String){
 				PropertyEditor editor = findDefaultEditor(requiredType);
 				try{
